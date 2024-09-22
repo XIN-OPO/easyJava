@@ -2,9 +2,9 @@ package com.easyjava.entity.po;
 import java.io.Serializable;
 public class Student implements Serializable {
 /**
-*@Description: 学生信息
-*@Author: 张鑫
-*@Date: 2024/09/23
+ * @Description: 学生信息
+ * @Author: 张鑫
+ * @Date: 2024/09/23
 */
 	private Integer sid;
 

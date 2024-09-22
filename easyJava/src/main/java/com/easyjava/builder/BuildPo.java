@@ -41,6 +41,11 @@ public class BuildPo {
                 bufferedWriter.newLine();
                 bufferedWriter.write(Constants.bean_date_unformat_class+";");
                 bufferedWriter.newLine();
+                bufferedWriter.write("import "+Constants.package_enums+".DateTimePatternEnum;");
+                bufferedWriter.newLine();
+                bufferedWriter.write("import "+Constants.package_utils+".DateUtils;");
+                bufferedWriter.newLine();
+                bufferedWriter.newLine();
             }
             if(tableInfo.isHaveBigDecimal()){
                 bufferedWriter.write("import java.math.BigDecimal;");
@@ -110,7 +115,14 @@ public class BuildPo {
             //重写toString方法
             for(FieldInfo fieldInfo: tableInfo.getFieldList()){
                 index++;
-                toString.append(fieldInfo.getFieldName()+":\" + ("+fieldInfo.getPropertyName()+" == null ? \"空\" : "+fieldInfo.getPropertyName()+")");
+
+                String properName= fieldInfo.getPropertyName();
+                if(ArrayUtils.contains(Constants.SQL_DATE_TIME_TYPES,fieldInfo.getSqlType())){
+                    properName="DateUtils.format("+properName+",DateTimePatternEnum.YYYY_MM_DD_HH_MM_SS.getPattern())";
+                }else if(ArrayUtils.contains(Constants.SQL_DATE_TYPES,fieldInfo.getSqlType())){
+                    properName="DateUtils.format("+properName+",DateTimePatternEnum.YYYY_MM_DD.getPattern())";
+                }
+                toString.append(fieldInfo.getFieldName()+":\" + ("+properName+" == null ? \"空\" : "+fieldInfo.getPropertyName()+")");
                 if(index<tableInfo.getFieldList().size()){
                     toString.append("+").append("\",");
                 }

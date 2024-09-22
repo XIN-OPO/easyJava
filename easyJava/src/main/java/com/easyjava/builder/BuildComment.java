@@ -14,11 +14,11 @@ public class BuildComment {
     public static void creatClassComment(BufferedWriter bufferedWriter,String classComment) throws Exception{
         bufferedWriter.write("/**");
         bufferedWriter.newLine();
-        bufferedWriter.write("*@Description: "+ classComment);
+        bufferedWriter.write(" * @Description: "+ classComment);
         bufferedWriter.newLine();
-        bufferedWriter.write("*@Author: "+ Constants.author_comment);
+        bufferedWriter.write(" * @Author: "+ Constants.author_comment);
         bufferedWriter.newLine();
-        bufferedWriter.write("*@Date: "+ DateUtils.format(new Date(),DateUtils._YYYYMMDD));
+        bufferedWriter.write(" * @Date: "+ DateUtils.format(new Date(),DateUtils._YYYYMMDD));
         bufferedWriter.newLine();
         bufferedWriter.write("*/");
         bufferedWriter.newLine();

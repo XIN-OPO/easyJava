@@ -3,10 +3,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 public class BooksInfo implements Serializable {
 /**
-*@Description: 书籍信息
+ * @Description: 书籍信息
 
-*@Author: 张鑫
-*@Date: 2024/09/23
+ * @Author: 张鑫
+ * @Date: 2024/09/23
 */
 /**
  *书籍id

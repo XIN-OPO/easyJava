@@ -3,10 +3,10 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Admin implements Serializable {
 /**
-*@Description: 管理员
+ * @Description: 管理员
 
-*@Author: 张鑫
-*@Date: 2024/09/23
+ * @Author: 张鑫
+ * @Date: 2024/09/23
 */
 	private Integer id;
 

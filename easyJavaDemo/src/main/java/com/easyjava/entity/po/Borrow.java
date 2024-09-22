@@ -3,11 +3,14 @@ import java.io.Serializable;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
+import com.easyjava.enums.DateTimePatternEnum;
+import com.easyjava.utils.DateUtils;
+
 public class Borrow implements Serializable {
 /**
-*@Description: 借阅信息
-*@Author: 张鑫
-*@Date: 2024/09/23
+ * @Description: 借阅信息
+ * @Author: 张鑫
+ * @Date: 2024/09/23
 */
 	private Integer id;
 
@@ -45,6 +48,6 @@ public class Borrow implements Serializable {
 	 }
 	@Override
 	 public String toString(){
-		return "id:" + (id == null ? "空" : id)+",sid:" + (sid == null ? "空" : sid)+",bid:" + (bid == null ? "空" : bid)+",time:" + (time == null ? "空" : time);
+		return "id:" + (id == null ? "空" : id)+",sid:" + (sid == null ? "空" : sid)+",bid:" + (bid == null ? "空" : bid)+",time:" + (DateUtils.format(time,DateTimePatternEnum.YYYY_MM_DD_HH_MM_SS.getPattern()) == null ? "空" : time);
 	}
 }
