@@ -56,7 +56,7 @@ public class BuildTable {
 //                logger.info(beanName);
                 tableInfo.setBeanName(beanName);
                 tableInfo.setComment(comment);
-                tableInfo.setBeanParamName(beanName+Constants.suffix_bean_param);
+                tableInfo.setBeanParamName(beanName+Constants.suffix_bean_query);
 //                logger.info("表:{},备注:{},JavaBean:{},JavaBeanParam:{}",tableName,tableInfo.getComment(),tableInfo.getBeanName(),tableInfo.getBeanParamName());
                 List<FieldInfo> fieldInfoList=readFieldInfo(tableInfo);
 //                logger.info("表{}",JsonUtils.convertObj2Json(tableInfo));

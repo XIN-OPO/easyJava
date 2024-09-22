@@ -1,10 +1,8 @@
-package com.easyjava.entity.po;
-import java.io.Serializable;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-public class Admin implements Serializable {
+package com.easyjava.entity.query;
+public class AdminQuery {
 /**
  * @Description: 管理员
-
+查询对象
  * @Author: 张鑫
  * @Date: 2024/09/23
 */
@@ -12,10 +10,15 @@ public class Admin implements Serializable {
 
 	private String username;
 
-	@JsonIgnore
+	private String usernameFuzzy;
+
 	private String nickname;
 
+	private String nicknameFuzzy;
+
 	private String password;
+
+	private String passwordFuzzy;
 
 	 public void setId(Integer id){
 		this.id=id;
@@ -41,8 +44,22 @@ public class Admin implements Serializable {
 	 public String getPassword(){
 		return this.password;
 	 }
-	@Override
-	 public String toString(){
-		return "id:" + (id == null ? "空" : id)+",username:" + (username == null ? "空" : username)+",nickname:" + (nickname == null ? "空" : nickname)+",password:" + (password == null ? "空" : password);
-	}
+	 public void setUsernameFuzzy(String usernameFuzzy){
+		this.usernameFuzzy=usernameFuzzy;
+	 }
+	 public String getUsernameFuzzy(){
+		return this.usernameFuzzy;
+	 }
+	 public void setNicknameFuzzy(String nicknameFuzzy){
+		this.nicknameFuzzy=nicknameFuzzy;
+	 }
+	 public String getNicknameFuzzy(){
+		return this.nicknameFuzzy;
+	 }
+	 public void setPasswordFuzzy(String passwordFuzzy){
+		this.passwordFuzzy=passwordFuzzy;
+	 }
+	 public String getPasswordFuzzy(){
+		return this.passwordFuzzy;
+	 }
 }

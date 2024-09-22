@@ -68,7 +68,7 @@ public class BuildPo {
 
             //构建类注释
             BuildComment.creatClassComment(bufferedWriter, tableInfo.getComment());
-
+            //构建字段以及字段注释
             for(FieldInfo fieldInfo: tableInfo.getFieldList()){
                 BuildComment.createFieldComment(bufferedWriter,fieldInfo.getComment());
                 if(ArrayUtils.contains(Constants.SQL_DATE_TIME_TYPES,fieldInfo.getSqlType())){
