@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyjava.mappers.BooksInfoMapper">
+	<!-- 实体映射 -->
+	<resultMap id="base_result_map" type="com.easyjava.entity.po.BooksInfo">
+
+		<!--书籍id -->
+		<id column="bid" property="bid"/>
+		<!--书名 -->
+		<result column="book_title" property="bookTitle"/>
+		<!--书籍简介 -->
+		<result column="descr" property="descr"/>
+		<!--书籍价格 -->
+		<result column="price" property="price"/>
+	</resultMap>
+	<!-- 通用查询结果列 -->
+	<sql id="base_column_list">
+		<if test="true">
+			bid,book_title,descr,price
+		</if>
+	</sql>
+</mapper>

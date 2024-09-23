@@ -91,24 +91,10 @@ public class BuildQuery {
                 }
             }
             List<FieldInfo> fieldInfoList= tableInfo.getFieldList();
-            fieldInfoList.addAll(extendList);
+//            fieldInfoList.addAll(extendList);
             //get set方法
-            for(FieldInfo fieldInfo: fieldInfoList){
-                String tempField= StringUtils.upperCaseFirstLetter(fieldInfo.getPropertyName());
-                bufferedWriter.write("\t public void set"+tempField+"("+fieldInfo.getJavaType()+" "+fieldInfo.getPropertyName()+"){");
-                bufferedWriter.newLine();
-                bufferedWriter.write("\t\tthis."+fieldInfo.getPropertyName()+"="+fieldInfo.getPropertyName()+";");
-                bufferedWriter.newLine();
-                bufferedWriter.write("\t }");
-                bufferedWriter.newLine();
-
-                bufferedWriter.write("\t public "+fieldInfo.getJavaType()+" get"+tempField+"(){");
-                bufferedWriter.newLine();
-                bufferedWriter.write("\t\treturn this."+fieldInfo.getPropertyName()+";");
-                bufferedWriter.newLine();
-                bufferedWriter.write("\t }");
-                bufferedWriter.newLine();
-            }
+            buildGetSet(bufferedWriter,fieldInfoList);
+            buildGetSet(bufferedWriter,extendList);
             bufferedWriter.write("}");
             bufferedWriter.flush();
         }catch (Exception e){
@@ -135,6 +121,24 @@ public class BuildQuery {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+    private static void buildGetSet(BufferedWriter bufferedWriter,List<FieldInfo> fieldInfoList) throws Exception{
+        for(FieldInfo fieldInfo: fieldInfoList){
+            String tempField= StringUtils.upperCaseFirstLetter(fieldInfo.getPropertyName());
+            bufferedWriter.write("\t public void set"+tempField+"("+fieldInfo.getJavaType()+" "+fieldInfo.getPropertyName()+"){");
+            bufferedWriter.newLine();
+            bufferedWriter.write("\t\tthis."+fieldInfo.getPropertyName()+"="+fieldInfo.getPropertyName()+";");
+            bufferedWriter.newLine();
+            bufferedWriter.write("\t }");
+            bufferedWriter.newLine();
+
+            bufferedWriter.write("\t public "+fieldInfo.getJavaType()+" get"+tempField+"(){");
+            bufferedWriter.newLine();
+            bufferedWriter.write("\t\treturn this."+fieldInfo.getPropertyName()+";");
+            bufferedWriter.newLine();
+            bufferedWriter.write("\t }");
+            bufferedWriter.newLine();
         }
     }
 }

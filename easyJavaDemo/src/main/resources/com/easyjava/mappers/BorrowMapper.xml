@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyjava.mappers.BorrowMapper">
+	<!-- 实体映射 -->
+	<resultMap id="base_result_map" type="com.easyjava.entity.po.Borrow">
+
+		<!-- -->
+		<id column="id" property="id"/>
+		<!-- -->
+		<result column="sid" property="sid"/>
+		<!-- -->
+		<result column="bid" property="bid"/>
+		<!-- -->
+		<result column="time" property="time"/>
+	</resultMap>
+	<!-- 通用查询结果列 -->
+	<sql id="base_column_list">
+		<if test="true">
+			id,sid,bid,time
+		</if>
+	</sql>
+</mapper>

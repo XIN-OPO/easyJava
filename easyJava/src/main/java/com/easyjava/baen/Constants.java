@@ -19,6 +19,7 @@ public class Constants {
     public static String path_enums;
     public static String path_query;
     public static String path_mappers;
+    public static String path_mapper_xmls;
 
     public static String package_po;
     public static String package_utils;
@@ -60,6 +61,7 @@ public class Constants {
         path_query=path_base+"/"+PropertiesUtils.getString("package.query").replace(".","/");
         package_mappers=package_base+"."+PropertiesUtils.getString("package.mappers");
         path_mappers=path_base+"/"+PropertiesUtils.getString("package.mappers").replace(".","/");
+        path_mapper_xmls=PropertiesUtils.getString("path.base")+path_resources+"/"+package_mappers.replace(".","/");
 
         author_comment=PropertiesUtils.getString("author.comment");
 
@@ -79,9 +81,6 @@ public class Constants {
     public final static String[] SQL_LONG_TYPES=new String[]{"bigint"};
 
     public static void main(String[] args) {
-        System.out.println(path_query);
-        System.out.println(path_utils);
-        System.out.println(path_base);
-        System.out.println(package_utils);
+        System.out.println(path_mapper_xmls);
     }
 }
