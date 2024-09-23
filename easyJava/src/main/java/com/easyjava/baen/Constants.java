@@ -8,6 +8,7 @@ public class Constants {
     public static String suffix_bean_query_fuzzy;
     public static String suffix_bean_query_time_start;
     public static String suffix_bean_query_time_end;
+    public static String suffix_mappers;
 
     public static String path_base;
     public static String package_base;
@@ -17,11 +18,13 @@ public class Constants {
     public static String path_utils;
     public static String path_enums;
     public static String path_query;
+    public static String path_mappers;
 
     public static String package_po;
     public static String package_utils;
     public static String package_enums;
     public static String package_query;
+    public static String package_mappers;
     public static String author_comment;
     //需要忽略的属性
     public static String ignore_bean_tojson_filed;
@@ -39,7 +42,7 @@ public class Constants {
         suffix_bean_query_fuzzy=PropertiesUtils.getString("suffix.bean.query.fuzzy");
         suffix_bean_query_time_start=PropertiesUtils.getString("suffix.bean.query.time.start");
         suffix_bean_query_time_end=PropertiesUtils.getString("suffix.bean.query.time.end");
-
+        suffix_mappers=PropertiesUtils.getString("suffix.mappers");
 
         path_base=PropertiesUtils.getString("path.base");
         path_base=path_base+path_java+"/"+PropertiesUtils.getString("package.base");
@@ -55,6 +58,8 @@ public class Constants {
         path_enums=path_base+"/"+PropertiesUtils.getString("package.enums").replace(".","/");
         package_query=package_base+"."+PropertiesUtils.getString("package.query");
         path_query=path_base+"/"+PropertiesUtils.getString("package.query").replace(".","/");
+        package_mappers=package_base+"."+PropertiesUtils.getString("package.mappers");
+        path_mappers=path_base+"/"+PropertiesUtils.getString("package.mappers").replace(".","/");
 
         author_comment=PropertiesUtils.getString("author.comment");
 

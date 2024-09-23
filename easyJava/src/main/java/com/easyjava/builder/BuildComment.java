@@ -33,7 +33,7 @@ public class BuildComment {
             bufferedWriter.newLine();
         }
     }
-    public static void creatMethodComment(){
+    public static void creatMethodComment(BufferedWriter bufferedWriter, String methodComment) throws Exception{
 
     }
 }
