@@ -6,7 +6,7 @@ public class BooksInfo implements Serializable {
  * @Description: 书籍信息
 
  * @Author: 张鑫
- * @Date: 2024/09/23
+ * @Date: 2024/09/26
 */
 /**
  *书籍id
@@ -54,6 +54,6 @@ public class BooksInfo implements Serializable {
 	 }
 	@Override
 	 public String toString(){
-		return "bid:" + (bid == null ? "空" : bid)+",book_title:" + (bookTitle == null ? "空" : bookTitle)+",descr:" + (descr == null ? "空" : descr)+",price:" + (price == null ? "空" : price);
+		return "bid:"+(bid == null ? "空" : bid)+",book_title:"+(bookTitle == null ? "空" : bookTitle)+",descr:"+(descr == null ? "空" : descr)+",price:"+(price == null ? "空" : price);
 	}
 }

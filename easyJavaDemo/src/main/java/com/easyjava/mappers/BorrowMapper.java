@@ -5,37 +5,37 @@ public interface BorrowMapper<T,P> extends BaseMapper {
 /**
  * @Description: 借阅信息
  * @Author: 张鑫
- * @Date: 2024/09/23
+ * @Date: 2024/09/26
 */
 
 /**
- *根据IdAnd,查询
+ *根据Id查询
 */
-	T selectByIdAnd,(@Param("id") Integer id);
+	T selectById(@Param("id") Integer id);
 
 /**
- *根据IdAnd,更新
+ *根据Id更新
 */
-	Integer updateByIdAnd,(@Param("bean") T t,@Param("id") Integer id);
+	Integer updateById(@Param("bean") T t , @Param("id") Integer id);
 
 /**
- *根据IdAnd,删除
+ *根据Id删除
 */
-	Integer deleteByIdAnd,(@Param("id") Integer id);
+	Integer deleteById(@Param("id") Integer id);
 
 /**
- *根据SidAnd,Bid查询
+ *根据SidAndBid查询
 */
-	T selectBySidAnd,Bid(@Param("sid") Integer sid@Param("bid") Integer bid);
+	T selectBySidAndBid(@Param("sid") Integer sid, @Param("bid") Integer bid);
 
 /**
- *根据SidAnd,Bid更新
+ *根据SidAndBid更新
 */
-	Integer updateBySidAnd,Bid(@Param("bean") T t,@Param("sid") Integer sid@Param("bid") Integer bid);
+	Integer updateBySidAndBid(@Param("bean") T t , @Param("sid") Integer sid, @Param("bid") Integer bid);
 
 /**
- *根据SidAnd,Bid删除
+ *根据SidAndBid删除
 */
-	Integer deleteBySidAnd,Bid(@Param("sid") Integer sid@Param("bid") Integer bid);
+	Integer deleteBySidAndBid(@Param("sid") Integer sid, @Param("bid") Integer bid);
 
 }

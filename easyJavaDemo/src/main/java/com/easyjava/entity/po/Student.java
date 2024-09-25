@@ -4,7 +4,7 @@ public class Student implements Serializable {
 /**
  * @Description: 学生信息
  * @Author: 张鑫
- * @Date: 2024/09/23
+ * @Date: 2024/09/26
 */
 	private Integer sid;
 
@@ -32,6 +32,6 @@ public class Student implements Serializable {
 	 }
 	@Override
 	 public String toString(){
-		return "sid:" + (sid == null ? "空" : sid)+",sname:" + (sname == null ? "空" : sname)+",grade:" + (grade == null ? "空" : grade);
+		return "sid:"+(sid == null ? "空" : sid)+",sname:"+(sname == null ? "空" : sname)+",grade:"+(grade == null ? "空" : grade);
 	}
 }

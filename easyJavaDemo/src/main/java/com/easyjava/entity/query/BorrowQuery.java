@@ -1,11 +1,11 @@
 package com.easyjava.entity.query;
 import java.util.Date;
 
-public class BorrowQuery {
+public class BorrowQuery extends BaseParam{
 /**
  * @Description: 借阅信息查询对象
  * @Author: 张鑫
- * @Date: 2024/09/23
+ * @Date: 2024/09/26
 */
 	private Integer id;
 

@@ -50,18 +50,18 @@ public class BuildMapper {
                 StringBuilder methodName=new StringBuilder();
 
                 StringBuilder methodParam=new StringBuilder();
+
                 for (FieldInfo fieldInfo:keyFieldInfoList){
                     index++;
                     methodName.append(StringUtils.upperCaseFirstLetter(fieldInfo.getPropertyName()));
-                    if(index<keyIndexMap.size()) {
+                    if(index<keyFieldInfoList.size()) {
                         methodName.append("And");
                     }
 
-                    if(index<keyIndexMap.size()) {
-                        methodName.append(",");
-                    }
-
                     methodParam.append("@Param(\""+fieldInfo.getPropertyName()+"\") "+fieldInfo.getJavaType()+" "+fieldInfo.getPropertyName());
+                    if(index<keyFieldInfoList.size()) {
+                        methodParam.append(", ");
+                    }
                 }
                 bufferedWriter.newLine();
                 BuildComment.createFieldComment(bufferedWriter,"根据"+methodName+"查询");
@@ -70,7 +70,7 @@ public class BuildMapper {
 
                 bufferedWriter.newLine();
                 BuildComment.createFieldComment(bufferedWriter,"根据"+methodName+"更新");
-                bufferedWriter.write("\tInteger updateBy"+methodName+"(@Param(\"bean\") T t,"+methodParam+");");
+                bufferedWriter.write("\tInteger updateBy"+methodName+"(@Param(\"bean\") T t , "+ methodParam+");");
                 bufferedWriter.newLine();
 
                 bufferedWriter.newLine();

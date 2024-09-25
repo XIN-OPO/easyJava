@@ -11,6 +11,7 @@ public class TableInfo {
     private String beanParamName;//参数名称
     private String comment;//表注释
     private List<FieldInfo> fieldList;//字段信息
+    private List<FieldInfo> fieldExtendList;//扩展字段信息
     private Map<String,List<FieldInfo>> keyIndexMap=new LinkedHashMap();//唯一索引集合
     private Boolean haveDate;//是否有date类型
     private Boolean haveDateTime;//是否有时间类型
@@ -90,6 +91,11 @@ public class TableInfo {
         this.haveBigDecimal = haveBigDecimal;
     }
 
+    public List<FieldInfo> getFieldExtendList() {
+        return fieldExtendList;
+    }
 
-
+    public void setFieldExtendList(List<FieldInfo> fieldExtendList) {
+        this.fieldExtendList = fieldExtendList;
+    }
 }

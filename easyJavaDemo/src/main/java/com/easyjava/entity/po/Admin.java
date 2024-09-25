@@ -6,7 +6,7 @@ public class Admin implements Serializable {
  * @Description: 管理员
 
  * @Author: 张鑫
- * @Date: 2024/09/23
+ * @Date: 2024/09/26
 */
 	private Integer id;
 
@@ -43,6 +43,6 @@ public class Admin implements Serializable {
 	 }
 	@Override
 	 public String toString(){
-		return "id:" + (id == null ? "空" : id)+",username:" + (username == null ? "空" : username)+",nickname:" + (nickname == null ? "空" : nickname)+",password:" + (password == null ? "空" : password);
+		return "id:"+(id == null ? "空" : id)+",username:"+(username == null ? "空" : username)+",nickname:"+(nickname == null ? "空" : nickname)+",password:"+(password == null ? "空" : password);
 	}
 }

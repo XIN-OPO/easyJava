@@ -45,13 +45,13 @@ public class BuildQuery {
             }
 
 
-            bufferedWriter.write("public class "+className+" {");
+            bufferedWriter.write("public class "+className+" extends BaseParam{");
             bufferedWriter.newLine();
 
             //构建类注释
             BuildComment.creatClassComment(bufferedWriter, tableInfo.getComment()+"查询对象");
             //构建字段以及字段注释
-            List<FieldInfo> extendList=new ArrayList();
+//            List<FieldInfo> extendList=new ArrayList();
             for(FieldInfo fieldInfo: tableInfo.getFieldList()){
                 BuildComment.createFieldComment(bufferedWriter,fieldInfo.getComment());
 
@@ -65,10 +65,6 @@ public class BuildQuery {
                     bufferedWriter.newLine();
                     bufferedWriter.newLine();
 
-                    FieldInfo fuzzyField=new FieldInfo();
-                    fuzzyField.setJavaType(fieldInfo.getJavaType());
-                    fuzzyField.setPropertyName(propertyName);
-                    extendList.add(fuzzyField);
                 }
                 if(ArrayUtils.contains(Constants.SQL_DATE_TYPES,fieldInfo.getSqlType())||ArrayUtils.contains(Constants.SQL_DATE_TIME_TYPES,fieldInfo.getSqlType())){
                     bufferedWriter.write("\tprivate String"+" "+fieldInfo.getPropertyName()+Constants.suffix_bean_query_time_start+";");
@@ -78,23 +74,13 @@ public class BuildQuery {
                     bufferedWriter.write("\tprivate String"+" "+fieldInfo.getPropertyName()+Constants.suffix_bean_query_time_end+";");
                     bufferedWriter.newLine();
                     bufferedWriter.newLine();
-
-                    FieldInfo timeStartField=new FieldInfo();
-                    timeStartField.setJavaType("String");
-                    timeStartField.setPropertyName(fieldInfo.getPropertyName()+Constants.suffix_bean_query_time_start);
-                    extendList.add(timeStartField);
-
-                    FieldInfo timeEndField=new FieldInfo();
-                    timeEndField.setJavaType("String");
-                    timeEndField.setPropertyName(fieldInfo.getPropertyName()+Constants.suffix_bean_query_time_end);
-                    extendList.add(timeEndField);
                 }
             }
-            List<FieldInfo> fieldInfoList= tableInfo.getFieldList();
+//            List<FieldInfo> fieldInfoList= tableInfo.getFieldList();
 //            fieldInfoList.addAll(extendList);
             //get set方法
-            buildGetSet(bufferedWriter,fieldInfoList);
-            buildGetSet(bufferedWriter,extendList);
+            buildGetSet(bufferedWriter, tableInfo.getFieldList());
+            buildGetSet(bufferedWriter,tableInfo.getFieldExtendList());
             bufferedWriter.write("}");
             bufferedWriter.flush();
         }catch (Exception e){

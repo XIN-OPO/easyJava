@@ -1,9 +1,9 @@
 package com.easyjava.entity.query;
-public class StudentQuery {
+public class StudentQuery extends BaseParam{
 /**
  * @Description: 学生信息查询对象
  * @Author: 张鑫
- * @Date: 2024/09/23
+ * @Date: 2024/09/26
 */
 	private Integer sid;
 

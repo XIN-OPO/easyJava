@@ -1,11 +1,11 @@
 package com.easyjava.entity.query;
 import java.math.BigDecimal;
-public class BooksInfoQuery {
+public class BooksInfoQuery extends BaseParam{
 /**
  * @Description: 书籍信息
 查询对象
  * @Author: 张鑫
- * @Date: 2024/09/23
+ * @Date: 2024/09/26
 */
 /**
  *书籍id

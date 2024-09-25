@@ -110,26 +110,26 @@ public class BuildPo {
                 bufferedWriter.write("\t }");
                 bufferedWriter.newLine();
             }
+
             StringBuffer toString=new StringBuffer();
             Integer index=0;
             //重写toString方法
             for(FieldInfo fieldInfo: tableInfo.getFieldList()){
                 index++;
-
                 String properName= fieldInfo.getPropertyName();
                 if(ArrayUtils.contains(Constants.SQL_DATE_TIME_TYPES,fieldInfo.getSqlType())){
-                    properName="DateUtils.format("+properName+",DateTimePatternEnum.YYYY_MM_DD_HH_MM_SS.getPattern())";
+                    properName="DateUtils.format("+properName+", DateTimePatternEnum.YYYY_MM_DD_HH_MM_SS.getPattern())";
                 }else if(ArrayUtils.contains(Constants.SQL_DATE_TYPES,fieldInfo.getSqlType())){
-                    properName="DateUtils.format("+properName+",DateTimePatternEnum.YYYY_MM_DD.getPattern())";
+                    properName="DateUtils.format("+properName+", DateTimePatternEnum.YYYY_MM_DD.getPattern())";
                 }
-                toString.append(fieldInfo.getFieldName()+":\" + ("+properName+" == null ? \"空\" : "+fieldInfo.getPropertyName()+")");
+                toString.append(fieldInfo.getFieldName()+":\"+("+properName+" == null ? \"空\" : "+fieldInfo.getPropertyName()+")");
                 if(index<tableInfo.getFieldList().size()){
                     toString.append("+").append("\",");
                 }
 //                toString.append("\",");
             }
             String toStringStr= toString.toString();
-            toStringStr="\""+toString;
+            toStringStr="\""+toStringStr;
             //toStringStr.substring(0,toStringStr.lastIndexOf(","));
 
             bufferedWriter.write("\t@Override");

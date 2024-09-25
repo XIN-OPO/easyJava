@@ -6,7 +6,7 @@ public interface AdminMapper<T,P> extends BaseMapper {
  * @Description: 管理员
 
  * @Author: 张鑫
- * @Date: 2024/09/23
+ * @Date: 2024/09/26
 */
 
 /**
@@ -17,7 +17,7 @@ public interface AdminMapper<T,P> extends BaseMapper {
 /**
  *根据Id更新
 */
-	Integer updateById(@Param("bean") T t,@Param("id") Integer id);
+	Integer updateById(@Param("bean") T t , @Param("id") Integer id);
 
 /**
  *根据Id删除
