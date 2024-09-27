@@ -17,13 +17,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootTest(classes=RunApplication.class)
 @RunWith(SpringRunner.class)
+@SpringBootTest(classes=RunApplication.class)
 public class MapperTest {
     @Resource
-//    private BorrowMapper<Borrow, BorrowQuery> queryBorrowMapper;
     private StudentMapper<Student, StudentQuery> queryStudentMapper;
 
     @Test
@@ -47,5 +47,33 @@ public class MapperTest {
         for (Student student:students){
             System.out.println(student);
         }
+    }
+
+    @Test
+    public void insert(){
+        Student student=new Student();
+        student.setSname("kido");
+        student.setGrade(2019);
+        this.queryStudentMapper.insert(student);
+        System.out.println(student.getSid());
+    }
+    @Test
+    public void insertOrUpdate(){
+        Student student=new Student();
+        student.setGrade(2017);
+        student.setSname("steven");
+        student.setSid(3);
+        this.queryStudentMapper.insertOrUpdate(student);
+        System.out.println(student.getSid());
+    }
+    @Test
+    public void insertBatch(){
+        List<Student> studentList=new ArrayList();
+        Student student=new Student();
+        student.setSname("kimi");
+        student.setGrade(2008);
+        studentList.add(student);
+        this.queryStudentMapper.insertBatch(studentList);
+
     }
 }

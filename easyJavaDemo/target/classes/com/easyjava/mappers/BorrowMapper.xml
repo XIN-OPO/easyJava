@@ -62,4 +62,160 @@
 	<select id="selectCount" resultType="java.lang.Long">
 		SELECT count(1) FROM borrow <include refid="query_condition"/>
 	</select>
+	<!-- 插入(匹配有值的字段) -->
+	<insert id="insert" parameterType="com.easyjava.entity.po.Borrow">
+		<selectKey keyProperty="bean.id" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+INSERT INTO borrow
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				id, 
+			</if>
+			<if test="bean.sid != null">
+				sid, 
+			</if>
+			<if test="bean.bid != null">
+				bid, 
+			</if>
+			<if test="bean.time != null">
+				time, 
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				#{bean.id}, 
+			</if>
+			<if test="bean.sid != null">
+				#{bean.sid}, 
+			</if>
+			<if test="bean.bid != null">
+				#{bean.bid}, 
+			</if>
+			<if test="bean.time != null">
+				#{bean.time}, 
+			</if>
+
+		</trim>
+	</insert>
+<!-- 插入或者更新 （匹配有值的字段）-->
+	<insert id="insertOrUpdate" parameterType="com.easyjava.entity.po.Borrow">
+		INSERT INTO borrow
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				id, 
+			</if>
+			<if test="bean.sid != null">
+				sid, 
+			</if>
+			<if test="bean.bid != null">
+				bid, 
+			</if>
+			<if test="bean.time != null">
+				time, 
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				#{bean.id}, 
+			</if>
+			<if test="bean.sid != null">
+				#{bean.sid}, 
+			</if>
+			<if test="bean.bid != null">
+				#{bean.bid}, 
+			</if>
+			<if test="bean.time != null">
+				#{bean.time}, 
+			</if>
+
+		</trim>
+		on DUPLICATE key update
+		<trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.time != null">
+				time = VALUES(time),
+			</if>
+
+		</trim>
+	</insert>
+<!-- 添加（批量插入）-->
+	<insert id="insertBatch" parameterType="com.easyjava.entity.po.Borrow">
+		INSERT INTO borrow(sid,bid,time) values
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.sid},#{item.bid},#{item.time}
+		</foreach>
+	</insert>
+<!-- 批量插入（或者更新）-->
+	<insert id="insertOrUpdateBatch" parameterType="com.easyjava.entity.po.Borrow">
+		INSERT INTO borrow(sid,bid,time) values
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.sid},#{item.bid},#{item.time}
+		</foreach>
+		on DUPLICATE key update
+			id = VALUES(id),sid = VALUES(sid),bid = VALUES(bid),time = VALUES(time)
+	</insert>
+<!-- 根据主键更新 -->
+
+	<!-- 根据Id查询-->
+	<select id="selectById" resultMap="base_result_map">
+		select <include refid="base_column_list"/> from borrow where id=#{id}
+	</select>
+
+<!-- 根据Id更新-->
+	<update id="updateById" parameterType="com.easyjava.entity.po.Borrow">
+		update from borrow
+			<set>
+				<if test="bean.id!=null">
+					id=#{bean.id},
+				</if>
+				<if test="bean.sid!=null">
+					sid=#{bean.sid},
+				</if>
+				<if test="bean.bid!=null">
+					bid=#{bean.bid},
+				</if>
+				<if test="bean.time!=null">
+					time=#{bean.time},
+				</if>
+
+			</set>
+		where id=#{id}
+	</update>
+	<!-- 根据Id删除-->
+	<delete id="deleteById">
+		delete from borrow where id=#{id}
+	</delete>
+
+	<!-- 根据SidAndBid查询-->
+	<select id="selectBySidAndBid" resultMap="base_result_map">
+		select <include refid="base_column_list"/> from borrow where id=#{id}sid=#{sid} and bid=#{bid}
+	</select>
+
+<!-- 根据SidAndBid更新-->
+	<update id="updateBySidAndBid" parameterType="com.easyjava.entity.po.Borrow">
+		update from borrow
+			<set>
+				<if test="bean.id!=null">
+					id=#{bean.id},
+				</if>
+				<if test="bean.sid!=null">
+					sid=#{bean.sid},
+				</if>
+				<if test="bean.bid!=null">
+					bid=#{bean.bid},
+				</if>
+				<if test="bean.time!=null">
+					time=#{bean.time},
+				</if>
+
+			</set>
+		where id=#{id}sid=#{sid} and bid=#{bid}
+	</update>
+	<!-- 根据SidAndBid删除-->
+	<delete id="deleteBySidAndBid">
+		delete from borrow where id=#{id}sid=#{sid} and bid=#{bid}
+	</delete>
+
 </mapper>

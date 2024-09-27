@@ -10,7 +10,7 @@ public class Borrow implements Serializable {
 /**
  * @Description: 借阅信息
  * @Author: 张鑫
- * @Date: 2024/09/26
+ * @Date: 2024/09/27
 */
 	private Integer id;
 

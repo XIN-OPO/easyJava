@@ -65,4 +65,136 @@
 	<select id="selectCount" resultType="java.lang.Long">
 		SELECT count(1) FROM admin <include refid="query_condition"/>
 	</select>
+	<!-- 插入(匹配有值的字段) -->
+	<insert id="insert" parameterType="com.easyjava.entity.po.Admin">
+		<selectKey keyProperty="bean.id" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+INSERT INTO admin
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				id, 
+			</if>
+			<if test="bean.username != null">
+				username, 
+			</if>
+			<if test="bean.nickname != null">
+				nickname, 
+			</if>
+			<if test="bean.password != null">
+				password, 
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				#{bean.id}, 
+			</if>
+			<if test="bean.username != null">
+				#{bean.username}, 
+			</if>
+			<if test="bean.nickname != null">
+				#{bean.nickname}, 
+			</if>
+			<if test="bean.password != null">
+				#{bean.password}, 
+			</if>
+
+		</trim>
+	</insert>
+<!-- 插入或者更新 （匹配有值的字段）-->
+	<insert id="insertOrUpdate" parameterType="com.easyjava.entity.po.Admin">
+		INSERT INTO admin
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				id, 
+			</if>
+			<if test="bean.username != null">
+				username, 
+			</if>
+			<if test="bean.nickname != null">
+				nickname, 
+			</if>
+			<if test="bean.password != null">
+				password, 
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.id != null">
+				#{bean.id}, 
+			</if>
+			<if test="bean.username != null">
+				#{bean.username}, 
+			</if>
+			<if test="bean.nickname != null">
+				#{bean.nickname}, 
+			</if>
+			<if test="bean.password != null">
+				#{bean.password}, 
+			</if>
+
+		</trim>
+		on DUPLICATE key update
+		<trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.username != null">
+				username = VALUES(username),
+			</if>
+			<if test="bean.nickname != null">
+				nickname = VALUES(nickname),
+			</if>
+			<if test="bean.password != null">
+				password = VALUES(password),
+			</if>
+
+		</trim>
+	</insert>
+<!-- 添加（批量插入）-->
+	<insert id="insertBatch" parameterType="com.easyjava.entity.po.Admin">
+		INSERT INTO admin(username,nickname,password) values
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.username},#{item.nickname},#{item.password}
+		</foreach>
+	</insert>
+<!-- 批量插入（或者更新）-->
+	<insert id="insertOrUpdateBatch" parameterType="com.easyjava.entity.po.Admin">
+		INSERT INTO admin(username,nickname,password) values
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.username},#{item.nickname},#{item.password}
+		</foreach>
+		on DUPLICATE key update
+			id = VALUES(id),username = VALUES(username),nickname = VALUES(nickname),password = VALUES(password)
+	</insert>
+<!-- 根据主键更新 -->
+
+	<!-- 根据Id查询-->
+	<select id="selectById" resultMap="base_result_map">
+		select <include refid="base_column_list"/> from admin where id=#{id}
+	</select>
+
+<!-- 根据Id更新-->
+	<update id="updateById" parameterType="com.easyjava.entity.po.Admin">
+		update from admin
+			<set>
+				<if test="bean.id!=null">
+					id=#{bean.id},
+				</if>
+				<if test="bean.username!=null">
+					username=#{bean.username},
+				</if>
+				<if test="bean.nickname!=null">
+					nickname=#{bean.nickname},
+				</if>
+				<if test="bean.password!=null">
+					password=#{bean.password},
+				</if>
+
+			</set>
+		where id=#{id}
+	</update>
+	<!-- 根据Id删除-->
+	<delete id="deleteById">
+		delete from admin where id=#{id}
+	</delete>
+
 </mapper>

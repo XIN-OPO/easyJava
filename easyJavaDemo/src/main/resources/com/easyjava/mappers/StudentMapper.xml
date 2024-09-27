@@ -54,4 +54,118 @@
 	<select id="selectCount" resultType="java.lang.Long">
 		SELECT count(1) FROM student <include refid="query_condition"/>
 	</select>
+	<!-- 插入(匹配有值的字段) -->
+	<insert id="insert" parameterType="com.easyjava.entity.po.Student">
+		<selectKey keyProperty="bean.sid" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+INSERT INTO student
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.sid != null">
+				sid, 
+			</if>
+			<if test="bean.sname != null">
+				sname, 
+			</if>
+			<if test="bean.grade != null">
+				grade, 
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.sid != null">
+				#{bean.sid}, 
+			</if>
+			<if test="bean.sname != null">
+				#{bean.sname}, 
+			</if>
+			<if test="bean.grade != null">
+				#{bean.grade}, 
+			</if>
+
+		</trim>
+	</insert>
+<!-- 插入或者更新 （匹配有值的字段）-->
+	<insert id="insertOrUpdate" parameterType="com.easyjava.entity.po.Student">
+		INSERT INTO student
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.sid != null">
+				sid, 
+			</if>
+			<if test="bean.sname != null">
+				sname, 
+			</if>
+			<if test="bean.grade != null">
+				grade, 
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.sid != null">
+				#{bean.sid}, 
+			</if>
+			<if test="bean.sname != null">
+				#{bean.sname}, 
+			</if>
+			<if test="bean.grade != null">
+				#{bean.grade}, 
+			</if>
+
+		</trim>
+		on DUPLICATE key update
+		<trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.sname != null">
+				sname = VALUES(sname),
+			</if>
+			<if test="bean.grade != null">
+				grade = VALUES(grade),
+			</if>
+
+		</trim>
+	</insert>
+<!-- 添加（批量插入）-->
+	<insert id="insertBatch" parameterType="com.easyjava.entity.po.Student">
+		INSERT INTO student(sname,grade) values
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.sname},#{item.grade}
+		</foreach>
+	</insert>
+<!-- 批量插入（或者更新）-->
+	<insert id="insertOrUpdateBatch" parameterType="com.easyjava.entity.po.Student">
+		INSERT INTO student(sname,grade) values
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.sname},#{item.grade}
+		</foreach>
+		on DUPLICATE key update
+			sid = VALUES(sid),sname = VALUES(sname),grade = VALUES(grade)
+	</insert>
+<!-- 根据主键更新 -->
+
+	<!-- 根据Sid查询-->
+	<select id="selectBySid" resultMap="base_result_map">
+		select <include refid="base_column_list"/> from student where sid=#{sid}
+	</select>
+
+<!-- 根据Sid更新-->
+	<update id="updateBySid" parameterType="com.easyjava.entity.po.Student">
+		update from student
+			<set>
+				<if test="bean.sid!=null">
+					sid=#{bean.sid},
+				</if>
+				<if test="bean.sname!=null">
+					sname=#{bean.sname},
+				</if>
+				<if test="bean.grade!=null">
+					grade=#{bean.grade},
+				</if>
+
+			</set>
+		where sid=#{sid}
+	</update>
+	<!-- 根据Sid删除-->
+	<delete id="deleteBySid">
+		delete from student where sid=#{sid}
+	</delete>
+
 </mapper>

@@ -15,7 +15,7 @@ public class TableInfo {
     private Map<String,List<FieldInfo>> keyIndexMap=new LinkedHashMap();//唯一索引集合
     private Boolean haveDate;//是否有date类型
     private Boolean haveDateTime;//是否有时间类型
-    private Boolean haveBigDecimal;//
+    private Boolean haveBigDecimal;//是否有数字类型
 
     public String getTableName() {
         return tableName;

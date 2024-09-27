@@ -62,4 +62,136 @@
 	<select id="selectCount" resultType="java.lang.Long">
 		SELECT count(1) FROM books_info <include refid="query_condition"/>
 	</select>
+	<!-- 插入(匹配有值的字段) -->
+	<insert id="insert" parameterType="com.easyjava.entity.po.BooksInfo">
+		<selectKey keyProperty="bean.bid" resultType="Integer" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+INSERT INTO books_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.bid != null">
+				bid, 
+			</if>
+			<if test="bean.bookTitle != null">
+				book_title, 
+			</if>
+			<if test="bean.descr != null">
+				descr, 
+			</if>
+			<if test="bean.price != null">
+				price, 
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.bid != null">
+				#{bean.bid}, 
+			</if>
+			<if test="bean.bookTitle != null">
+				#{bean.bookTitle}, 
+			</if>
+			<if test="bean.descr != null">
+				#{bean.descr}, 
+			</if>
+			<if test="bean.price != null">
+				#{bean.price}, 
+			</if>
+
+		</trim>
+	</insert>
+<!-- 插入或者更新 （匹配有值的字段）-->
+	<insert id="insertOrUpdate" parameterType="com.easyjava.entity.po.BooksInfo">
+		INSERT INTO books_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bean.bid != null">
+				bid, 
+			</if>
+			<if test="bean.bookTitle != null">
+				book_title, 
+			</if>
+			<if test="bean.descr != null">
+				descr, 
+			</if>
+			<if test="bean.price != null">
+				price, 
+			</if>
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="bean.bid != null">
+				#{bean.bid}, 
+			</if>
+			<if test="bean.bookTitle != null">
+				#{bean.bookTitle}, 
+			</if>
+			<if test="bean.descr != null">
+				#{bean.descr}, 
+			</if>
+			<if test="bean.price != null">
+				#{bean.price}, 
+			</if>
+
+		</trim>
+		on DUPLICATE key update
+		<trim prefix="" suffix="" suffixOverrides=",">
+			<if test="bean.bookTitle != null">
+				bookTitle = VALUES(book_title),
+			</if>
+			<if test="bean.descr != null">
+				descr = VALUES(descr),
+			</if>
+			<if test="bean.price != null">
+				price = VALUES(price),
+			</if>
+
+		</trim>
+	</insert>
+<!-- 添加（批量插入）-->
+	<insert id="insertBatch" parameterType="com.easyjava.entity.po.BooksInfo">
+		INSERT INTO books_info(book_title,descr,price) values
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.bookTitle},#{item.descr},#{item.price}
+		</foreach>
+	</insert>
+<!-- 批量插入（或者更新）-->
+	<insert id="insertOrUpdateBatch" parameterType="com.easyjava.entity.po.BooksInfo">
+		INSERT INTO books_info(book_title,descr,price) values
+		<foreach collection="list" item="item" separator="," open="(" close=")">
+			#{item.bookTitle},#{item.descr},#{item.price}
+		</foreach>
+		on DUPLICATE key update
+			bid = VALUES(bid),book_title = VALUES(book_title),descr = VALUES(descr),price = VALUES(price)
+	</insert>
+<!-- 根据主键更新 -->
+
+	<!-- 根据Bid查询-->
+	<select id="selectByBid" resultMap="base_result_map">
+		select <include refid="base_column_list"/> from books_info where bid=#{bid}
+	</select>
+
+<!-- 根据Bid更新-->
+	<update id="updateByBid" parameterType="com.easyjava.entity.po.BooksInfo">
+		update from books_info
+			<set>
+				<if test="bean.bid!=null">
+					bid=#{bean.bid},
+				</if>
+				<if test="bean.bookTitle!=null">
+					book_title=#{bean.bookTitle},
+				</if>
+				<if test="bean.descr!=null">
+					descr=#{bean.descr},
+				</if>
+				<if test="bean.price!=null">
+					price=#{bean.price},
+				</if>
+
+			</set>
+		where bid=#{bid}
+	</update>
+	<!-- 根据Bid删除-->
+	<delete id="deleteByBid">
+		delete from books_info where bid=#{bid}
+	</delete>
+
 </mapper>
