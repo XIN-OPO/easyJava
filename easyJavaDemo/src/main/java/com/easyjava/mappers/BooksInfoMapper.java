@@ -17,11 +17,11 @@ public interface BooksInfoMapper<T,P> extends BaseMapper {
 /**
  *根据Bid更新
 */
-	Long updateByBid(@Param("bean") T t , @Param("bid") Integer bid);
+	Integer updateByBid(@Param("bean") T t , @Param("bid") Integer bid);
 
 /**
  *根据Bid删除
 */
-	Long deleteByBid(@Param("bid") Integer bid);
+	Integer deleteByBid(@Param("bid") Integer bid);
 
 }

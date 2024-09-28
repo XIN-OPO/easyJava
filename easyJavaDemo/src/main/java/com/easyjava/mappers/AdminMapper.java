@@ -17,11 +17,11 @@ public interface AdminMapper<T,P> extends BaseMapper {
 /**
  *根据Id更新
 */
-	Long updateById(@Param("bean") T t , @Param("id") Integer id);
+	Integer updateById(@Param("bean") T t , @Param("id") Integer id);
 
 /**
  *根据Id删除
 */
-	Long deleteById(@Param("id") Integer id);
+	Integer deleteById(@Param("id") Integer id);
 
 }

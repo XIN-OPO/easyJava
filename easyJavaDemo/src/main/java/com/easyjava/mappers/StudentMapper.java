@@ -16,12 +16,12 @@ public interface StudentMapper<T,P> extends BaseMapper {
 /**
  *根据Sid更新
 */
-	Long updateBySid(@Param("bean") T t , @Param("sid") Integer sid);
+	Integer updateBySid(@Param("bean") T t , @Param("sid") Integer sid);
 
 /**
  *根据Sid删除
 */
-	Long deleteBySid(@Param("sid") Integer sid);
+	Integer deleteBySid(@Param("sid") Integer sid);
 
 /**
  *根据Sname查询
@@ -31,11 +31,11 @@ public interface StudentMapper<T,P> extends BaseMapper {
 /**
  *根据Sname更新
 */
-	Long updateBySname(@Param("bean") T t , @Param("sname") String sname);
+	Integer updateBySname(@Param("bean") T t , @Param("sname") String sname);
 
 /**
  *根据Sname删除
 */
-	Long deleteBySname(@Param("sname") String sname);
+	Integer deleteBySname(@Param("sname") String sname);
 
 }

@@ -16,12 +16,12 @@ public interface BorrowMapper<T,P> extends BaseMapper {
 /**
  *根据Id更新
 */
-	Long updateById(@Param("bean") T t , @Param("id") Integer id);
+	Integer updateById(@Param("bean") T t , @Param("id") Integer id);
 
 /**
  *根据Id删除
 */
-	Long deleteById(@Param("id") Integer id);
+	Integer deleteById(@Param("id") Integer id);
 
 /**
  *根据SidAndBid查询
@@ -31,11 +31,11 @@ public interface BorrowMapper<T,P> extends BaseMapper {
 /**
  *根据SidAndBid更新
 */
-	Long updateBySidAndBid(@Param("bean") T t , @Param("sid") Integer sid, @Param("bid") Integer bid);
+	Integer updateBySidAndBid(@Param("bean") T t , @Param("sid") Integer sid, @Param("bid") Integer bid);
 
 /**
  *根据SidAndBid删除
 */
-	Long deleteBySidAndBid(@Param("sid") Integer sid, @Param("bid") Integer bid);
+	Integer deleteBySidAndBid(@Param("sid") Integer sid, @Param("bid") Integer bid);
 
 }

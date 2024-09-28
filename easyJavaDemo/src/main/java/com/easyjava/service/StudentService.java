@@ -19,7 +19,7 @@ public interface StudentService{
 /**
  *根据条件查询数量
 */
-	Long findCountByParam(StudentQuery query);
+	Integer findCountByParam(StudentQuery query);
 
 /**
  *分页查询
@@ -29,46 +29,46 @@ public interface StudentService{
 /**
  *新增
 */
-	Long add(Student bean);
+	Integer add(Student bean);
 
 /**
  *批量新增
 */
-	Long addBatch(List<Student> listBean);
+	Integer addBatch(List<Student> listBean);
 
 /**
  *批量新增或修改
 */
-	Long addOrUpdateBatch(List<Student> listBean);
+	Integer addOrUpdateBatch(List<Student> listBean);
 
 
 /**
  *根据Sid查询
 */
-	Student getBySid(Integer sid);
+	Student getStudentBySid(Integer sid);
 
 /**
  *根据Sid更新
 */
-	Long updateBySid( Student bean , Integer sid);
+	Integer updateStudentBySid( Student bean , Integer sid);
 
 /**
  *根据Sid删除
 */
-	Long deleteBySid(Integer sid);
+	Integer deleteStudentBySid(Integer sid);
 
 /**
  *根据Sname查询
 */
-	Student getBySname(String sname);
+	Student getStudentBySname(String sname);
 
 /**
  *根据Sname更新
 */
-	Long updateBySname( Student bean , String sname);
+	Integer updateStudentBySname( Student bean , String sname);
 
 /**
  *根据Sname删除
 */
-	Long deleteBySname(String sname);
+	Integer deleteStudentBySname(String sname);
 }

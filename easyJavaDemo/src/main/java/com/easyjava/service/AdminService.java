@@ -20,7 +20,7 @@ public interface AdminService{
 /**
  *根据条件查询数量
 */
-	Long findCountByParam(AdminQuery query);
+	Integer findCountByParam(AdminQuery query);
 
 /**
  *分页查询
@@ -30,31 +30,31 @@ public interface AdminService{
 /**
  *新增
 */
-	Long add(Admin bean);
+	Integer add(Admin bean);
 
 /**
  *批量新增
 */
-	Long addBatch(List<Admin> listBean);
+	Integer addBatch(List<Admin> listBean);
 
 /**
  *批量新增或修改
 */
-	Long addOrUpdateBatch(List<Admin> listBean);
+	Integer addOrUpdateBatch(List<Admin> listBean);
 
 
 /**
  *根据Id查询
 */
-	Admin getById(Integer id);
+	Admin getAdminById(Integer id);
 
 /**
  *根据Id更新
 */
-	Long updateById( Admin bean , Integer id);
+	Integer updateAdminById( Admin bean , Integer id);
 
 /**
  *根据Id删除
 */
-	Long deleteById(Integer id);
+	Integer deleteAdminById(Integer id);
 }

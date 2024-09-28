@@ -25,7 +25,7 @@ public interface BorrowService{
 /**
  *根据条件查询数量
 */
-	Long findCountByParam(BorrowQuery query);
+	Integer findCountByParam(BorrowQuery query);
 
 /**
  *分页查询
@@ -35,46 +35,46 @@ public interface BorrowService{
 /**
  *新增
 */
-	Long add(Borrow bean);
+	Integer add(Borrow bean);
 
 /**
  *批量新增
 */
-	Long addBatch(List<Borrow> listBean);
+	Integer addBatch(List<Borrow> listBean);
 
 /**
  *批量新增或修改
 */
-	Long addOrUpdateBatch(List<Borrow> listBean);
+	Integer addOrUpdateBatch(List<Borrow> listBean);
 
 
 /**
  *根据Id查询
 */
-	Borrow getById(Integer id);
+	Borrow getBorrowById(Integer id);
 
 /**
  *根据Id更新
 */
-	Long updateById( Borrow bean , Integer id);
+	Integer updateBorrowById( Borrow bean , Integer id);
 
 /**
  *根据Id删除
 */
-	Long deleteById(Integer id);
+	Integer deleteBorrowById(Integer id);
 
 /**
  *根据SidAndBid查询
 */
-	Borrow getBySidAndBid(Integer sid, Integer bid);
+	Borrow getBorrowBySidAndBid(Integer sid, Integer bid);
 
 /**
  *根据SidAndBid更新
 */
-	Long updateBySidAndBid( Borrow bean , Integer sid, Integer bid);
+	Integer updateBorrowBySidAndBid( Borrow bean , Integer sid, Integer bid);
 
 /**
  *根据SidAndBid删除
 */
-	Long deleteBySidAndBid(Integer sid, Integer bid);
+	Integer deleteBorrowBySidAndBid(Integer sid, Integer bid);
 }
