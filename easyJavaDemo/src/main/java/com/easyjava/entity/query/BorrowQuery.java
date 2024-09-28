@@ -5,7 +5,7 @@ public class BorrowQuery extends BaseParam{
 /**
  * @Description: 借阅信息查询对象
  * @Author: 张鑫
- * @Date: 2024/09/28
+ * @Date: 2024/09/29
 */
 	private Integer id;
 

@@ -5,7 +5,7 @@ public class BooksInfoQuery extends BaseParam{
  * @Description: 书籍信息
 查询对象
  * @Author: 张鑫
- * @Date: 2024/09/28
+ * @Date: 2024/09/29
 */
 /**
  *书籍id

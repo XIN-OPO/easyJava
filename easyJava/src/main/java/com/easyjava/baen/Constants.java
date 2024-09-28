@@ -69,7 +69,7 @@ public class Constants {
         path_mappers=path_base+"/"+PropertiesUtils.getString("package.mappers").replace(".","/");
         path_mapper_xmls=PropertiesUtils.getString("path.base")+path_resources+"/"+package_mappers.replace(".","/");
         package_service=package_base+"."+PropertiesUtils.getString("package.service");
-        package_service_impl=package_base+"."+PropertiesUtils.getString("package_service_impl");
+        package_service_impl=package_base+"."+PropertiesUtils.getString("package.service.impl");
         path_service=path_base+"/"+PropertiesUtils.getString("package.service").replace(".","/");
         path_service_impl=path_base+"/"+PropertiesUtils.getString("package.service.impl").replace(".","/");
         package_vo=package_base+"."+PropertiesUtils.getString("package.vo");
