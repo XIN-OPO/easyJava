@@ -128,7 +128,7 @@ public class BuildPo {
                 }
 //                toString.append("\",");
             }
-            String toStringStr= toString.toString();
+            String toStringStr= String.valueOf(toString);
             toStringStr="\""+toStringStr;
             //toStringStr.substring(0,toStringStr.lastIndexOf(","));
 

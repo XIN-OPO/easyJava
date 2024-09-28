@@ -325,11 +325,11 @@ public class BuildMapperXml {
             String insertStr=insertFieldBuffer.substring(0, insertFieldBuffer.lastIndexOf(","));
             bufferedWriter.write("\t\tINSERT INTO "+tableInfo.getTableName()+"("+insertStr+") values");
             bufferedWriter.newLine();
-            bufferedWriter.write("\t\t<foreach collection=\"list\" item=\"item\" separator=\",\" open=\"(\" close=\")\">");
+            bufferedWriter.write("\t\t<foreach collection=\"list\" item=\"item\" separator=\",\">");
             bufferedWriter.newLine();
 
             String insertPropertyStr=insertPropertyBuffer.substring(0, insertPropertyBuffer.lastIndexOf(","));
-            bufferedWriter.write("\t\t\t"+insertPropertyStr);
+            bufferedWriter.write("\t\t\t("+insertPropertyStr+")");
             bufferedWriter.newLine();
             bufferedWriter.write("\t\t</foreach>");
             bufferedWriter.newLine();
@@ -344,10 +344,10 @@ public class BuildMapperXml {
             insertStr=insertFieldBuffer.substring(0, insertFieldBuffer.lastIndexOf(","));
             bufferedWriter.write("\t\tINSERT INTO "+tableInfo.getTableName()+"("+insertStr+") values");
             bufferedWriter.newLine();
-            bufferedWriter.write("\t\t<foreach collection=\"list\" item=\"item\" separator=\",\" open=\"(\" close=\")\">");
+            bufferedWriter.write("\t\t<foreach collection=\"list\" item=\"item\" separator=\",\">");
             bufferedWriter.newLine();
             insertPropertyStr=insertPropertyBuffer.substring(0, insertPropertyBuffer.lastIndexOf(","));
-            bufferedWriter.write("\t\t\t"+insertPropertyStr);
+            bufferedWriter.write("\t\t\t"+"("+insertPropertyStr+")");
             bufferedWriter.newLine();
             bufferedWriter.write("\t\t</foreach>");
             bufferedWriter.newLine();
@@ -366,14 +366,14 @@ public class BuildMapperXml {
             //根据主键更新
             bufferedWriter.write("<!-- 根据主键更新 -->");
             bufferedWriter.newLine();
-            StringBuffer paramNames=new StringBuffer();
+
             for(Map.Entry<String,List<FieldInfo>> entry: keyIndexMap.entrySet()){
                 List<FieldInfo> keyFieldInfoList=entry.getValue();
                 Integer index=0;
                 StringBuilder methodName=new StringBuilder();
-
+                StringBuffer paramNames=new StringBuffer();
                 for (FieldInfo fieldInfo:keyFieldInfoList){
-                    index++;
+                    index++;//跳过了首个主键
                     methodName.append(StringUtils.upperCaseFirstLetter(fieldInfo.getPropertyName()));
                     paramNames.append(fieldInfo.getFieldName()+"=#{"+fieldInfo.getPropertyName()+"}");
                     if(index<keyFieldInfoList.size()) {
@@ -382,12 +382,11 @@ public class BuildMapperXml {
                     }
                 }
                 bufferedWriter.newLine();
-//                BuildComment.createFieldComment(bufferedWriter,"根据"+methodName+"查询");
                 bufferedWriter.write("\t<!-- 根据"+methodName+"查询-->");
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t<select id=\"selectBy"+methodName+"\" resultMap=\"base_result_map\">");
                 bufferedWriter.newLine();
-                bufferedWriter.write("\t\tselect <include refid=\""+base_column_list+"\"/> from "+tableInfo.getTableName()+" where "+paramNames+"");
+                bufferedWriter.write("\t\tselect <include refid=\""+base_column_list+"\"/> from "+tableInfo.getTableName()+" where "+paramNames);
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t</select>");
                 bufferedWriter.newLine();
@@ -396,7 +395,7 @@ public class BuildMapperXml {
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t<update id=\"updateBy"+methodName+"\" parameterType=\""+poClass+"\">");
                 bufferedWriter.newLine();
-                bufferedWriter.write("\t\tupdate from "+tableInfo.getTableName());
+                bufferedWriter.write("\t\tupdate "+tableInfo.getTableName());
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t\t\t<set>");
                 bufferedWriter.newLine();
@@ -415,11 +414,12 @@ public class BuildMapperXml {
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t</update>");
                 bufferedWriter.newLine();
+
                 bufferedWriter.write("\t<!-- 根据"+methodName+"删除-->");
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t<delete id=\"deleteBy"+methodName+"\">");
                 bufferedWriter.newLine();
-                bufferedWriter.write("\t\tdelete from "+tableInfo.getTableName()+" where "+paramNames+"");
+                bufferedWriter.write("\t\tdelete from "+tableInfo.getTableName()+" where "+paramNames);
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t</delete>");
                 bufferedWriter.newLine();

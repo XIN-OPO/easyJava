@@ -6,7 +6,7 @@ public interface AdminMapper<T,P> extends BaseMapper {
  * @Description: 管理员
 
  * @Author: 张鑫
- * @Date: 2024/09/27
+ * @Date: 2024/09/28
 */
 
 /**

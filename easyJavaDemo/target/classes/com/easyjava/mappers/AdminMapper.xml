@@ -152,15 +152,15 @@ INSERT INTO admin
 <!-- 添加（批量插入）-->
 	<insert id="insertBatch" parameterType="com.easyjava.entity.po.Admin">
 		INSERT INTO admin(username,nickname,password) values
-		<foreach collection="list" item="item" separator="," open="(" close=")">
-			#{item.username},#{item.nickname},#{item.password}
+		<foreach collection="list" item="item" separator=",">
+			(#{item.username},#{item.nickname},#{item.password})
 		</foreach>
 	</insert>
 <!-- 批量插入（或者更新）-->
 	<insert id="insertOrUpdateBatch" parameterType="com.easyjava.entity.po.Admin">
 		INSERT INTO admin(username,nickname,password) values
-		<foreach collection="list" item="item" separator="," open="(" close=")">
-			#{item.username},#{item.nickname},#{item.password}
+		<foreach collection="list" item="item" separator=",">
+			(#{item.username},#{item.nickname},#{item.password})
 		</foreach>
 		on DUPLICATE key update
 			id = VALUES(id),username = VALUES(username),nickname = VALUES(nickname),password = VALUES(password)
@@ -174,7 +174,7 @@ INSERT INTO admin
 
 <!-- 根据Id更新-->
 	<update id="updateById" parameterType="com.easyjava.entity.po.Admin">
-		update from admin
+		update admin
 			<set>
 				<if test="bean.id!=null">
 					id=#{bean.id},

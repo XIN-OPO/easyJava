@@ -149,15 +149,15 @@ INSERT INTO books_info
 <!-- 添加（批量插入）-->
 	<insert id="insertBatch" parameterType="com.easyjava.entity.po.BooksInfo">
 		INSERT INTO books_info(book_title,descr,price) values
-		<foreach collection="list" item="item" separator="," open="(" close=")">
-			#{item.bookTitle},#{item.descr},#{item.price}
+		<foreach collection="list" item="item" separator=",">
+			(#{item.bookTitle},#{item.descr},#{item.price})
 		</foreach>
 	</insert>
 <!-- 批量插入（或者更新）-->
 	<insert id="insertOrUpdateBatch" parameterType="com.easyjava.entity.po.BooksInfo">
 		INSERT INTO books_info(book_title,descr,price) values
-		<foreach collection="list" item="item" separator="," open="(" close=")">
-			#{item.bookTitle},#{item.descr},#{item.price}
+		<foreach collection="list" item="item" separator=",">
+			(#{item.bookTitle},#{item.descr},#{item.price})
 		</foreach>
 		on DUPLICATE key update
 			bid = VALUES(bid),book_title = VALUES(book_title),descr = VALUES(descr),price = VALUES(price)
@@ -171,7 +171,7 @@ INSERT INTO books_info
 
 <!-- 根据Bid更新-->
 	<update id="updateByBid" parameterType="com.easyjava.entity.po.BooksInfo">
-		update from books_info
+		update books_info
 			<set>
 				<if test="bean.bid!=null">
 					bid=#{bean.bid},

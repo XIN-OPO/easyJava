@@ -114,9 +114,6 @@ INSERT INTO student
 		</trim>
 		on DUPLICATE key update
 		<trim prefix="" suffix="" suffixOverrides=",">
-			<if test="bean.sname != null">
-				sname = VALUES(sname),
-			</if>
 			<if test="bean.grade != null">
 				grade = VALUES(grade),
 			</if>
@@ -126,15 +123,15 @@ INSERT INTO student
 <!-- 添加（批量插入）-->
 	<insert id="insertBatch" parameterType="com.easyjava.entity.po.Student">
 		INSERT INTO student(sname,grade) values
-		<foreach collection="list" item="item" separator="," open="(" close=")">
-			#{item.sname},#{item.grade}
+		<foreach collection="list" item="item" separator=",">
+			(#{item.sname},#{item.grade})
 		</foreach>
 	</insert>
 <!-- 批量插入（或者更新）-->
 	<insert id="insertOrUpdateBatch" parameterType="com.easyjava.entity.po.Student">
 		INSERT INTO student(sname,grade) values
-		<foreach collection="list" item="item" separator="," open="(" close=")">
-			#{item.sname},#{item.grade}
+		<foreach collection="list" item="item" separator=",">
+			(#{item.sname},#{item.grade})
 		</foreach>
 		on DUPLICATE key update
 			sid = VALUES(sid),sname = VALUES(sname),grade = VALUES(grade)
@@ -148,7 +145,7 @@ INSERT INTO student
 
 <!-- 根据Sid更新-->
 	<update id="updateBySid" parameterType="com.easyjava.entity.po.Student">
-		update from student
+		update student
 			<set>
 				<if test="bean.sid!=null">
 					sid=#{bean.sid},
@@ -166,6 +163,33 @@ INSERT INTO student
 	<!-- 根据Sid删除-->
 	<delete id="deleteBySid">
 		delete from student where sid=#{sid}
+	</delete>
+
+	<!-- 根据Sname查询-->
+	<select id="selectBySname" resultMap="base_result_map">
+		select <include refid="base_column_list"/> from student where sname=#{sname}
+	</select>
+
+<!-- 根据Sname更新-->
+	<update id="updateBySname" parameterType="com.easyjava.entity.po.Student">
+		update student
+			<set>
+				<if test="bean.sid!=null">
+					sid=#{bean.sid},
+				</if>
+				<if test="bean.sname!=null">
+					sname=#{bean.sname},
+				</if>
+				<if test="bean.grade!=null">
+					grade=#{bean.grade},
+				</if>
+
+			</set>
+		where sname=#{sname}
+	</update>
+	<!-- 根据Sname删除-->
+	<delete id="deleteBySname">
+		delete from student where sname=#{sname}
 	</delete>
 
 </mapper>

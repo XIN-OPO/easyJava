@@ -6,7 +6,7 @@ public interface BooksInfoMapper<T,P> extends BaseMapper {
  * @Description: 书籍信息
 
  * @Author: 张鑫
- * @Date: 2024/09/27
+ * @Date: 2024/09/28
 */
 
 /**
