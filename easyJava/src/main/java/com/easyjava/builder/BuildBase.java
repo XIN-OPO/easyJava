@@ -45,6 +45,12 @@ public class BuildBase {
             headerInfoList.add("package "+Constants.package_query);
             build(headerInfoList,"BaseParam",Constants.path_query);
 
+            //生成Pagination
+            headerInfoList.clear();
+            headerInfoList.add("package "+Constants.package_vo);
+            headerInfoList.add("import java.util.ArrayList");
+            headerInfoList.add("import java.util.List");
+            build(headerInfoList,"PaginationResultVO",Constants.path_vo);
         }
 
         private static void build(List<String> headerInfoList, String fileName, String outputPath) {

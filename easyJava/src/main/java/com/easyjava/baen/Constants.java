@@ -20,6 +20,9 @@ public class Constants {
     public static String path_query;
     public static String path_mappers;
     public static String path_mapper_xmls;
+    public static String path_service;
+    public static String path_service_impl;
+    public static String path_vo;
 
     public static String package_po;
     public static String package_utils;
@@ -27,6 +30,9 @@ public class Constants {
     public static String package_query;
     public static String package_mappers;
     public static String author_comment;
+    public static String package_service;
+    public static String package_service_impl;
+    public static String package_vo;
     //需要忽略的属性
     public static String ignore_bean_tojson_filed;
     public static String ignore_bean_tojson_expression;
@@ -62,6 +68,12 @@ public class Constants {
         package_mappers=package_base+"."+PropertiesUtils.getString("package.mappers");
         path_mappers=path_base+"/"+PropertiesUtils.getString("package.mappers").replace(".","/");
         path_mapper_xmls=PropertiesUtils.getString("path.base")+path_resources+"/"+package_mappers.replace(".","/");
+        package_service=package_base+"."+PropertiesUtils.getString("package.service");
+        package_service_impl=package_base+"."+PropertiesUtils.getString("package_service_impl");
+        path_service=path_base+"/"+PropertiesUtils.getString("package.service").replace(".","/");
+        path_service_impl=path_base+"/"+PropertiesUtils.getString("package.service.impl").replace(".","/");
+        package_vo=package_base+"."+PropertiesUtils.getString("package.vo");
+        path_vo=path_base+"/"+PropertiesUtils.getString("package.vo").replace(".","/");
 
         author_comment=PropertiesUtils.getString("author.comment");
 

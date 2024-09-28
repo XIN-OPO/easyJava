@@ -70,12 +70,12 @@ public class BuildMapper {
 
                 bufferedWriter.newLine();
                 BuildComment.createFieldComment(bufferedWriter,"根据"+methodName+"更新");
-                bufferedWriter.write("\tInteger updateBy"+methodName+"(@Param(\"bean\") T t , "+ methodParam+");");
+                bufferedWriter.write("\tLong updateBy"+methodName+"(@Param(\"bean\") T t , "+ methodParam+");");
                 bufferedWriter.newLine();
 
                 bufferedWriter.newLine();
                 BuildComment.createFieldComment(bufferedWriter,"根据"+methodName+"删除");
-                bufferedWriter.write("\tInteger deleteBy"+methodName+"("+methodParam+");");
+                bufferedWriter.write("\tLong deleteBy"+methodName+"("+methodParam+");");
                 bufferedWriter.newLine();
 
             }

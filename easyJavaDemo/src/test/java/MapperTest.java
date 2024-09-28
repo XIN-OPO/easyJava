@@ -108,9 +108,10 @@ public class MapperTest {
     @Test
     public void updateByKey(){
         Student student1=new Student();
-        student1.setGrade(2015);
-        queryStudentMapper.updateBySid(student1,1);
+        student1.setGrade(2014);
+        Long count=queryStudentMapper.updateBySid(student1,1);
         System.out.println(queryStudentMapper.selectBySid(1));
+        System.out.println(count);
     }
     @Test
     public void deleteByKey(){
