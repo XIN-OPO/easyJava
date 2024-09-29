@@ -14,7 +14,7 @@ import java.util.List;
  * @Description: 书籍信息
 ServiceImpl
  * @Author: 张鑫
- * @Date: 2024/09/29
+ * @Date: 2024/09/30
 */
 @Service("booksInfoService")
 public class BooksInfoServiceImpl implements BooksInfoService {

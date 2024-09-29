@@ -8,7 +8,7 @@ import java.util.List;
  * @Description: 管理员
 Service
  * @Author: 张鑫
- * @Date: 2024/09/29
+ * @Date: 2024/09/30
 */
 public interface AdminService{
 

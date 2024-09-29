@@ -6,7 +6,7 @@ public class BooksInfo implements Serializable {
  * @Description: 书籍信息
 
  * @Author: 张鑫
- * @Date: 2024/09/29
+ * @Date: 2024/09/30
 */
 /**
  *书籍id

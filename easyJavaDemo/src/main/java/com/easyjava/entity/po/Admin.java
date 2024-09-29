@@ -6,7 +6,7 @@ public class Admin implements Serializable {
  * @Description: 管理员
 
  * @Author: 张鑫
- * @Date: 2024/09/29
+ * @Date: 2024/09/30
 */
 	private Integer id;
 

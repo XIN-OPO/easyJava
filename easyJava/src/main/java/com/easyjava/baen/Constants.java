@@ -23,6 +23,8 @@ public class Constants {
     public static String path_service;
     public static String path_service_impl;
     public static String path_vo;
+    public static String path_exception;
+    public static String path_controller;
 
     public static String package_po;
     public static String package_utils;
@@ -33,6 +35,8 @@ public class Constants {
     public static String package_service;
     public static String package_service_impl;
     public static String package_vo;
+    public static String package_exception;
+    public static String package_controller;
     //需要忽略的属性
     public static String ignore_bean_tojson_filed;
     public static String ignore_bean_tojson_expression;
@@ -74,6 +78,10 @@ public class Constants {
         path_service_impl=path_base+"/"+PropertiesUtils.getString("package.service.impl").replace(".","/");
         package_vo=package_base+"."+PropertiesUtils.getString("package.vo");
         path_vo=path_base+"/"+PropertiesUtils.getString("package.vo").replace(".","/");
+        package_exception=package_base+"."+PropertiesUtils.getString("package.exception");
+        path_exception=path_base+"/"+PropertiesUtils.getString("package.exception").replace(".","/");
+        package_controller=package_base+"."+PropertiesUtils.getString("package.controller");
+        path_controller=path_base+"/"+PropertiesUtils.getString("package.controller").replace(".","/");
 
         author_comment=PropertiesUtils.getString("author.comment");
 
