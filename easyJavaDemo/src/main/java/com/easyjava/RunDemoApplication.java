@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @MapperScan(basePackages = {"com.easyjava.mappers"})
-public class RunApplication {
+public class RunDemoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(RunApplication.class,args);
+        SpringApplication.run(RunDemoApplication.class,args);
     }
 }

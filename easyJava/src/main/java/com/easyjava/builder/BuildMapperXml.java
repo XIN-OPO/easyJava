@@ -187,7 +187,7 @@ public class BuildMapperXml {
             //查询数量
             bufferedWriter.write("\t<!-- 查询数量 -->");
             bufferedWriter.newLine();
-            bufferedWriter.write("\t<select id=\"selectCount\" resultType=\"java.lang.Long\">");
+            bufferedWriter.write("\t<select id=\"selectCount\" resultType=\"java.lang.Integer\">");
             bufferedWriter.newLine();
             bufferedWriter.write("\t\tSELECT count(1) FROM "+tableInfo.getTableName()+" <include refid=\""+query_condition+"\"/>");
             bufferedWriter.newLine();

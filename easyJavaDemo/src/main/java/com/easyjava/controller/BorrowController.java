@@ -29,6 +29,8 @@ public class BorrowController extends ABaseController {
 /**
  *新增
 */
+
+	@RequestMapping("add")
 	public ResponseVO add(Borrow bean) {
 		this.borrowService.add(bean);
 		return getSuccessResponseVO(null);
@@ -36,6 +38,8 @@ public class BorrowController extends ABaseController {
 /**
  *批量新增
 */
+
+	@RequestMapping("addBatch")
 	public ResponseVO addBatch(@RequestBody List<Borrow> listBean) {
 		this.borrowService.addBatch(listBean);
 		return getSuccessResponseVO(null);
@@ -43,6 +47,8 @@ public class BorrowController extends ABaseController {
 /**
  *批量新增或修改
 */
+
+	@RequestMapping("addOrUpdateBatch")
 	public ResponseVO addOrUpdateBatch(@RequestBody List<Borrow> listBean) {
 		this.borrowService.addOrUpdateBatch(listBean);
 		return getSuccessResponseVO(null);
@@ -51,12 +57,16 @@ public class BorrowController extends ABaseController {
 /**
  *根据Id查询
 */
+
+	@RequestMapping("getBorrowById")
 	public ResponseVO getBorrowById(Integer id) {
 		return getSuccessResponseVO(this.borrowService.getBorrowById(id));
 	}
 /**
  *根据Id更新
 */
+
+	@RequestMapping("updateBorrowById")
 	public ResponseVO updateBorrowById( Borrow bean , Integer id) {
 		this.borrowService.updateBorrowById(bean,id);
 		return getSuccessResponseVO(null);
@@ -65,6 +75,7 @@ public class BorrowController extends ABaseController {
 /**
  *根据Id删除
 */
+	@RequestMapping("deleteBorrowById")
 	public ResponseVO deleteBorrowById(Integer id) {
 		this.borrowService.deleteBorrowById(id);
 		return getSuccessResponseVO(null);
@@ -73,12 +84,16 @@ public class BorrowController extends ABaseController {
 /**
  *根据SidAndBid查询
 */
+
+	@RequestMapping("getBorrowBySidAndBid")
 	public ResponseVO getBorrowBySidAndBid(Integer sid, Integer bid) {
 		return getSuccessResponseVO(this.borrowService.getBorrowBySidAndBid(sid, bid));
 	}
 /**
  *根据SidAndBid更新
 */
+
+	@RequestMapping("updateBorrowBySidAndBid")
 	public ResponseVO updateBorrowBySidAndBid( Borrow bean , Integer sid, Integer bid) {
 		this.borrowService.updateBorrowBySidAndBid(bean,sid, bid);
 		return getSuccessResponseVO(null);
@@ -87,6 +102,7 @@ public class BorrowController extends ABaseController {
 /**
  *根据SidAndBid删除
 */
+	@RequestMapping("deleteBorrowBySidAndBid")
 	public ResponseVO deleteBorrowBySidAndBid(Integer sid, Integer bid) {
 		this.borrowService.deleteBorrowBySidAndBid(sid, bid);
 		return getSuccessResponseVO(null);

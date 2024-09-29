@@ -92,6 +92,9 @@ public class BuildController {
             bufferedWriter.newLine();
 
             BuildComment.createFieldComment(bufferedWriter,"新增");
+            bufferedWriter.newLine();
+            bufferedWriter.write("\t@RequestMapping(\"add\")");
+            bufferedWriter.newLine();
             bufferedWriter.write("\tpublic ResponseVO add("+tableInfo.getBeanName()+" bean) {");
             bufferedWriter.newLine();
             bufferedWriter.write("\t\tthis."+serviceBeanName+".add(bean);");
@@ -101,6 +104,9 @@ public class BuildController {
             bufferedWriter.write("\t}");
             bufferedWriter.newLine();
             BuildComment.createFieldComment(bufferedWriter,"批量新增");
+            bufferedWriter.newLine();
+            bufferedWriter.write("\t@RequestMapping(\"addBatch\")");
+            bufferedWriter.newLine();
             bufferedWriter.write("\tpublic ResponseVO addBatch(@RequestBody List<"+tableInfo.getBeanName()+"> listBean) {");
             bufferedWriter.newLine();
             bufferedWriter.write("\t\tthis."+serviceBeanName+".addBatch(listBean);");
@@ -110,6 +116,9 @@ public class BuildController {
             bufferedWriter.write("\t}");
             bufferedWriter.newLine();
             BuildComment.createFieldComment(bufferedWriter,"批量新增或修改");
+            bufferedWriter.newLine();
+            bufferedWriter.write("\t@RequestMapping(\"addOrUpdateBatch\")");
+            bufferedWriter.newLine();
             bufferedWriter.write("\tpublic ResponseVO addOrUpdateBatch(@RequestBody List<"+tableInfo.getBeanName()+"> listBean) {");
             bufferedWriter.newLine();
             bufferedWriter.write("\t\tthis."+serviceBeanName+".addOrUpdateBatch(listBean);");
@@ -145,6 +154,10 @@ public class BuildController {
                 }
                 bufferedWriter.newLine();
                 BuildComment.createFieldComment(bufferedWriter,"根据"+methodName+"查询");
+                bufferedWriter.newLine();
+                String methdName="get"+tableInfo.getBeanName()+"By"+methodName;
+                bufferedWriter.write("\t@RequestMapping(\""+methdName+"\")");
+                bufferedWriter.newLine();
                 bufferedWriter.write("\tpublic ResponseVO get"+tableInfo.getBeanName()+"By"+methodName+"("+methodParam+") {");
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t\treturn getSuccessResponseVO(this."+serviceBeanName+".get"+tableInfo.getBeanName()+"By"+methodName+"("+paramBuilder+"));");
@@ -152,6 +165,10 @@ public class BuildController {
                 bufferedWriter.write("\t}");
                 bufferedWriter.newLine();
                 BuildComment.createFieldComment(bufferedWriter,"根据"+methodName+"更新");
+                bufferedWriter.newLine();
+                methdName="update"+tableInfo.getBeanName()+"By"+methodName;
+                bufferedWriter.write("\t@RequestMapping(\""+methdName+"\")");
+                bufferedWriter.newLine();
                 bufferedWriter.write("\tpublic ResponseVO update"+tableInfo.getBeanName()+"By"+methodName+"( "+tableInfo.getBeanName()+" bean , "+ methodParam+") {");
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t\tthis."+serviceBeanName+".update"+tableInfo.getBeanName()+"By"+methodName+"(bean,"+paramBuilder+");");
@@ -163,7 +180,10 @@ public class BuildController {
 
                 bufferedWriter.newLine();
                 BuildComment.createFieldComment(bufferedWriter,"根据"+methodName+"删除");
-                bufferedWriter.write("\tpublic ResponseVO delete"+tableInfo.getBeanName()+"By"+methodName+"("+methodParam+") {");
+                methdName="delete"+tableInfo.getBeanName()+"By"+methodName;
+                bufferedWriter.write("\t@RequestMapping(\""+methdName+"\")");
+                bufferedWriter.newLine();
+                bufferedWriter.write("\tpublic ResponseVO "+methdName+"("+methodParam+") {");
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t\tthis."+serviceBeanName+".delete"+tableInfo.getBeanName()+"By"+methodName+"("+paramBuilder+");");
                 bufferedWriter.newLine();

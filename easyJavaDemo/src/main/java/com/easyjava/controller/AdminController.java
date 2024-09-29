@@ -30,6 +30,8 @@ public class AdminController extends ABaseController {
 /**
  *新增
 */
+
+	@RequestMapping("add")
 	public ResponseVO add(Admin bean) {
 		this.adminService.add(bean);
 		return getSuccessResponseVO(null);
@@ -37,6 +39,8 @@ public class AdminController extends ABaseController {
 /**
  *批量新增
 */
+
+	@RequestMapping("addBatch")
 	public ResponseVO addBatch(@RequestBody List<Admin> listBean) {
 		this.adminService.addBatch(listBean);
 		return getSuccessResponseVO(null);
@@ -44,6 +48,8 @@ public class AdminController extends ABaseController {
 /**
  *批量新增或修改
 */
+
+	@RequestMapping("addOrUpdateBatch")
 	public ResponseVO addOrUpdateBatch(@RequestBody List<Admin> listBean) {
 		this.adminService.addOrUpdateBatch(listBean);
 		return getSuccessResponseVO(null);
@@ -52,12 +58,16 @@ public class AdminController extends ABaseController {
 /**
  *根据Id查询
 */
+
+	@RequestMapping("getAdminById")
 	public ResponseVO getAdminById(Integer id) {
 		return getSuccessResponseVO(this.adminService.getAdminById(id));
 	}
 /**
  *根据Id更新
 */
+
+	@RequestMapping("updateAdminById")
 	public ResponseVO updateAdminById( Admin bean , Integer id) {
 		this.adminService.updateAdminById(bean,id);
 		return getSuccessResponseVO(null);
@@ -66,6 +76,7 @@ public class AdminController extends ABaseController {
 /**
  *根据Id删除
 */
+	@RequestMapping("deleteAdminById")
 	public ResponseVO deleteAdminById(Integer id) {
 		this.adminService.deleteAdminById(id);
 		return getSuccessResponseVO(null);

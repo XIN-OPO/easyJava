@@ -30,6 +30,8 @@ public class BooksInfoController extends ABaseController {
 /**
  *新增
 */
+
+	@RequestMapping("add")
 	public ResponseVO add(BooksInfo bean) {
 		this.booksInfoService.add(bean);
 		return getSuccessResponseVO(null);
@@ -37,6 +39,8 @@ public class BooksInfoController extends ABaseController {
 /**
  *批量新增
 */
+
+	@RequestMapping("addBatch")
 	public ResponseVO addBatch(@RequestBody List<BooksInfo> listBean) {
 		this.booksInfoService.addBatch(listBean);
 		return getSuccessResponseVO(null);
@@ -44,6 +48,8 @@ public class BooksInfoController extends ABaseController {
 /**
  *批量新增或修改
 */
+
+	@RequestMapping("addOrUpdateBatch")
 	public ResponseVO addOrUpdateBatch(@RequestBody List<BooksInfo> listBean) {
 		this.booksInfoService.addOrUpdateBatch(listBean);
 		return getSuccessResponseVO(null);
@@ -52,12 +58,16 @@ public class BooksInfoController extends ABaseController {
 /**
  *根据Bid查询
 */
+
+	@RequestMapping("getBooksInfoByBid")
 	public ResponseVO getBooksInfoByBid(Integer bid) {
 		return getSuccessResponseVO(this.booksInfoService.getBooksInfoByBid(bid));
 	}
 /**
  *根据Bid更新
 */
+
+	@RequestMapping("updateBooksInfoByBid")
 	public ResponseVO updateBooksInfoByBid( BooksInfo bean , Integer bid) {
 		this.booksInfoService.updateBooksInfoByBid(bean,bid);
 		return getSuccessResponseVO(null);
@@ -66,6 +76,7 @@ public class BooksInfoController extends ABaseController {
 /**
  *根据Bid删除
 */
+	@RequestMapping("deleteBooksInfoByBid")
 	public ResponseVO deleteBooksInfoByBid(Integer bid) {
 		this.booksInfoService.deleteBooksInfoByBid(bid);
 		return getSuccessResponseVO(null);

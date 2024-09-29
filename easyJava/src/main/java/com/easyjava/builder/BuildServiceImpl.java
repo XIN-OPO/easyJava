@@ -69,7 +69,7 @@ public class BuildServiceImpl {
             bufferedWriter.newLine();
             bufferedWriter.newLine();
             BuildComment.creatClassComment(bufferedWriter, tableInfo.getComment()+"ServiceImpl");
-            bufferedWriter.write("@Service(\""+StringUtils.lowerCaseFirstLetter(interfaceName)+"\")");
+            bufferedWriter.write("@Service(\""+StringUtils.lowerCaseFirstLetter(tableInfo.getBeanName())+"Service\")");
             bufferedWriter.newLine();
             bufferedWriter.write("public class "+className+" implements "+interfaceName+" {");
             bufferedWriter.newLine();

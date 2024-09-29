@@ -29,6 +29,8 @@ public class StudentController extends ABaseController {
 /**
  *新增
 */
+
+	@RequestMapping("add")
 	public ResponseVO add(Student bean) {
 		this.studentService.add(bean);
 		return getSuccessResponseVO(null);
@@ -36,6 +38,8 @@ public class StudentController extends ABaseController {
 /**
  *批量新增
 */
+
+	@RequestMapping("addBatch")
 	public ResponseVO addBatch(@RequestBody List<Student> listBean) {
 		this.studentService.addBatch(listBean);
 		return getSuccessResponseVO(null);
@@ -43,6 +47,8 @@ public class StudentController extends ABaseController {
 /**
  *批量新增或修改
 */
+
+	@RequestMapping("addOrUpdateBatch")
 	public ResponseVO addOrUpdateBatch(@RequestBody List<Student> listBean) {
 		this.studentService.addOrUpdateBatch(listBean);
 		return getSuccessResponseVO(null);
@@ -51,12 +57,16 @@ public class StudentController extends ABaseController {
 /**
  *根据Sid查询
 */
+
+	@RequestMapping("getStudentBySid")
 	public ResponseVO getStudentBySid(Integer sid) {
 		return getSuccessResponseVO(this.studentService.getStudentBySid(sid));
 	}
 /**
  *根据Sid更新
 */
+
+	@RequestMapping("updateStudentBySid")
 	public ResponseVO updateStudentBySid( Student bean , Integer sid) {
 		this.studentService.updateStudentBySid(bean,sid);
 		return getSuccessResponseVO(null);
@@ -65,6 +75,7 @@ public class StudentController extends ABaseController {
 /**
  *根据Sid删除
 */
+	@RequestMapping("deleteStudentBySid")
 	public ResponseVO deleteStudentBySid(Integer sid) {
 		this.studentService.deleteStudentBySid(sid);
 		return getSuccessResponseVO(null);
@@ -73,12 +84,16 @@ public class StudentController extends ABaseController {
 /**
  *根据Sname查询
 */
+
+	@RequestMapping("getStudentBySname")
 	public ResponseVO getStudentBySname(String sname) {
 		return getSuccessResponseVO(this.studentService.getStudentBySname(sname));
 	}
 /**
  *根据Sname更新
 */
+
+	@RequestMapping("updateStudentBySname")
 	public ResponseVO updateStudentBySname( Student bean , String sname) {
 		this.studentService.updateStudentBySname(bean,sname);
 		return getSuccessResponseVO(null);
@@ -87,6 +102,7 @@ public class StudentController extends ABaseController {
 /**
  *根据Sname删除
 */
+	@RequestMapping("deleteStudentBySname")
 	public ResponseVO deleteStudentBySname(String sname) {
 		this.studentService.deleteStudentBySname(sname);
 		return getSuccessResponseVO(null);
