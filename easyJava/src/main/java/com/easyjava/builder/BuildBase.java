@@ -73,7 +73,7 @@ public class BuildBase {
             //生成ResponseVO
             headerInfoList.clear();
             headerInfoList.add("package "+Constants.package_vo);
-            build(headerInfoList,"ResponseVO",Constants.path_po);
+            build(headerInfoList,"ResponseVO",Constants.path_vo);
 
             //生成AGlobalExceptionHandlerController
             headerInfoList.clear();
