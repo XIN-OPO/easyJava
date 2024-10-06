@@ -67,7 +67,7 @@ public class BuildController {
             bufferedWriter.newLine();
             bufferedWriter.newLine();
             BuildComment.creatClassComment(bufferedWriter, tableInfo.getComment()+"Controller");
-            bufferedWriter.write("@RestController");
+            bufferedWriter.write("@RestController(\""+StringUtils.lowerCaseFirstLetter(tableInfo.getBeanName())+"Controller\")");
             bufferedWriter.newLine();
             bufferedWriter.write("@RequestMapping(\""+StringUtils.lowerCaseFirstLetter(tableInfo.getBeanName())+"\")");
             bufferedWriter.newLine();
