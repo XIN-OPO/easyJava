@@ -115,7 +115,7 @@ public class BuildMapperXml {
                 }
                 bufferedWriter.write("\t\t<if test=\"query."+fieldInfo.getPropertyName()+" !=null"+stringQuery+"\">");
                 bufferedWriter.newLine();
-                bufferedWriter.write("\t\t\tand id= #{query."+fieldInfo.getPropertyName()+"}");
+                bufferedWriter.write("\t\t\tand "+fieldInfo.getFieldName()+"= #{query."+fieldInfo.getPropertyName()+"}");
                 bufferedWriter.newLine();
                 bufferedWriter.write("\t\t</if>");
                 bufferedWriter.newLine();
